@@ -51,7 +51,7 @@
 
 			<section style="display:none;">
 				<h1 class="h3">Terima kasih</h1>
-				<p>Data Anda sudah kami simpan dan dilihat pada spreadsheet ini: <a target="_blank" href="https://docs.google.com/spreadsheets/d/19G1lXw4e_2ijlNSERvism0t9IABmUpYDU83DjGzZDgY/edit?usp=sharing">SpreadSheet</a></p>
+				<p>Data Anda sudah kami simpan dan dapat dilihat pada spreadsheet ini: <a target="_blank" href="https://docs.google.com/spreadsheets/d/19G1lXw4e_2ijlNSERvism0t9IABmUpYDU83DjGzZDgY/edit?usp=sharing">SpreadSheet</a></p>
 
 				<button id="resubmit" class="btn btn-sm btn-outline-secondary">Submit Data Baru</button>
 			</section>
@@ -78,6 +78,7 @@ $(function(){
 
 	$('#resubmit').on('click', function(){
 		$('#btnSubmit').prop('disabled',false);
+		$('#btnSubmit').html('Simpan');
 		$('main').show();
 		$('section').hide();
 	})
