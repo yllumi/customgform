@@ -1,0 +1,88 @@
+
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.115.4">
+    <title>Test Submit</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
+
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#712cf9">
+</head>
+<body class="d-flex align-items-center py-4 bg-body-tertiary">
+
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-5">
+			<main class="form-signin w-100 m-auto">
+			  <form id="formSignin">
+
+			    <h1 class="h3 mb-3 fw-normal">Daftar</h1>
+
+			    <div class="form-floating mb-1">
+			      <input type="text" class="form-control" id="floatingInput" name="entry.834655134" required>
+			      <label for="floatingInput">Nama Lengkap</label>
+			    </div>
+
+			    <div class="form-floating mb-2">
+			      <input type="text" class="form-control" id="floatingPassword" name="entry.17905450" required>
+			      <label for="floatingPassword">Nomor Induk</label>
+			    </div>
+
+			    <button id="btnSubmit" class="btn btn-primary w-100 py-2">Simpan</button>
+			  </form>
+			</main>
+
+			<section style="display:none;">
+				<h1 class="h3">Terima kasih</h1>
+				<p>Data Anda sudah kami simpan.</p>
+
+				<button id="resubmit" class="btn btn-link">Submit Data Baru</button>
+			</section>
+		</div>
+	</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
+<script>
+$(function(){
+	$('#formSignin').on('submit', function(e){
+		e.preventDefault();
+		$('#btnSubmit').prop('disabled',true);
+		$('#btnSubmit').html('Menyimpan..');
+		let data = $(this).serialize();
+		$.post('https://docs.google.com/forms/d/e/1FAIpQLSc726FepTmbPuebuZ3H5g2tSB9ooWA4RHdHsHUhNw_X-7fe_Q/formResponse', data)
+		.always(function( data ) {
+			$('input').val('');
+			$('main').hide();
+			$('section').show();
+		});
+	})
+
+	$('#resubmit').on('click', function(){
+		$('#btnSubmit').prop('disabled',false);
+		$('main').show();
+		$('section').hide();
+	})
+})	
+</script>
+
+    </body>
+</html>
